@@ -5,32 +5,59 @@ let lives = 3;
 let fire;
 let weatherData;
 let colorSun;
+let jungle;
+let cursorTarget;
+let hart;
+let myFont;
+
+
+function preload() {
+  jungle = loadImage("js/assets/jungle.png");
+  hart = loadImage("js/assets/hart2.png")
+}
 
 function setup() {
   createCanvas(1000, 600);
+  cursor(CROSS, 0, 0)
+  myFont = loadFont("js/assets/gameFont.ttf")
+  
   fire = document.getElementById("fire-audio");
   loadJSON(
     "http://api.openweathermap.org/data/2.5/weather?q=London,uk&appid=80bb45745fad93410447e2ac0b16c781",
     gotWeatherData
   );
+
+  // Draw the jungle image as the background
+  // image(jungle, 0, 0, width, height);
 }
 
 function gotWeatherData(data) {
   weatherData = data;
-  }
+}
 
 function setColorSun() {
   if (weatherData) {
     colorSun = weatherData.main.temp - 68;
-    } 
-  else {
-    colorSun = 245
-    }
+  } else {
+    colorSun = 245;
+  }
+}
+function drawHarts() {
+  if (lives == 3){
+    image(hart, width - 100, 50)
+  }
+  if(lives >= 2) {
+    image(hart, width -150, 50)
+  }
+  if(lives >= 1) {
+    image(hart, width -200, 50)
+  }
 }
 
 function draw() {
-  drawBackground();
-  drawText()
+  image(jungle, 0, 0, width, height);
+  drawHarts()
+  drawText();
   for (let i = frogArray.length - 1; i >= 0; i--) {
     frogArray[i].display();
     frogArray[i].move();
@@ -41,28 +68,23 @@ function draw() {
       activeFrogs--;
     }
   }
-  
 
   // Regenerate frogs if active frogs < 5
   if (activeFrogs < 5) {
     for (let i = 0; i < 5 - activeFrogs; i++) {
-      frogArray.push(
-        new Frog(random(-1000, -10), random(height), random(1, 4))
-      );
+      frogArray.push(new Frog(random(-1000, -10), random(height), random(1, 4)));
       activeFrogs++;
     }
   }
 }
 
 function drawText() {
+  textSize(50);
+  textFont(myFont);
   fill(0);
-  textSize(30);
-  text("score: " + score, 24, 60);
-  text("lives: " + lives, 24, 180);
-  text("active frogs: " + activeFrogs, 24, 120);
+  
+  text("score: " + score, 30, 83);
 }
-
-
 
 function mouseClicked() {
   fire.play();
@@ -70,23 +92,6 @@ function mouseClicked() {
   for (let i = 0; i < frogArray.length; i++) {
     frogArray[i].hitTest(mouseX, mouseY);
   }
-}
-
-function drawBackground() {
-  // background(map(weer.main.temp, -10, 40, 0, 255)); // Mapping temperature to background color
-  background(20, 132, 202);
-  
-  // Brown counter
-  fill(164, 116, 73);
-  noStroke();
-  rect(0, (2 / 3) * height, width, (1 / 3) * height);
-  
-  setColorSun(); // Call the setColorSun() function
-  
-  fill(colorSun, 150, 41);
-  circle((3 / 4) * width, 100, 200);
-  
-  stroke(0, 0, 0);
 }
 
 
@@ -106,17 +111,38 @@ class Frog {
     if (this.isHit) {
       fill(0);
     } else {
-      fill(0, this.color, 0);
-      strokeWeight(1);
-      circle(0, 0, 50);
-      ellipse(0, -35, 60, 35);
-      fill(250);
-      circle(-15, -50, 15);
-      circle(15, -50, 15);
+      noStroke();
+      fill(0, 123, 0);
+      beginShape();
+      vertex(0, 80);
+      vertex(20, 60);
+      vertex(20, 50);
+      vertex(30, 35);
+      vertex(60, 35);
+      vertex(55, 20);
+      vertex(55, 80);
+      vertex(0, 80);
+      endShape(CLOSE);
+      
+      fill(70);
+      quad(20, 35, 30, 20, 80, 20, 70, 35);
+      quad(0, 80, 15, 60, 40, 60, 30, 80);
+      quad(50, 60, 60, 60, 65, 80, 55, 80);
+      
+      fill(255);
+      circle(60, 10, 20);
+      
       fill(0);
-      circle(-12, -46, 6);
-      circle(12, -46, 6);
+      quad(50, 10, 60, 6, 70, 10, 60, 14);
+      
+      fill(200, 200, 0);
+      quad(25, 32, 26, 28, 33, 28, 31, 32);
+      
+      strokeWeight(3);
+      fill(0);
+      line(70, 30, 50, 30);
     }
+    
 
     pop();
   }
@@ -126,8 +152,8 @@ class Frog {
   }
 
   hitTest(x, y) {
-    const d = dist(x, y, this.posx, this.posy);
-    if (d <= 50) {
+    const d = dist(x-20, y, this.posx, this.posy);
+    if (d <= 80) {
       this.isHit = true;
       score += 100;
     }
