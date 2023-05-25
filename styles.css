@@ -4,7 +4,7 @@ body {
     font-family: 'Roboto Mono', monospace;
     color: black;
   }
-header {
+header a {
     
     font-weight: 200;
     text-decoration: none;
@@ -12,61 +12,109 @@ header {
     color: black;
 }
 
+.navbar {
+  display: flex;
+  position: relative;
+  justify-content: space-between;
+  align-items: center;
+  background-color: white;
+  color: black;
+}
 
-#header-logo {
-    font-size: 2.5em;
-    margin: .5em;
-    font-family: 'Montserrat Subrayada', sans-serif;
+.brand-title {
+  font-family: 'Montserrat Subrayada', sans-serif;
+  font-size: 3rem;
+  margin: .5rem;
+  margin-left: 3rem;
 }
-.nav-main{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-top: 0;
-    margin-bottom: 2em;
-    margin-right: 2em;
-    margin-left: 2em;
+
+.navbar-links {
+  height: 100%;
 }
-.nav-main ul {
-    display: flex;
-    list-style: none;
+
+.navbar-links ul {
+  display: flex;
+  margin: 1.rem;
+  padding: 0;
+  margin-right: 3em;
+}
+
+.navbar-links li {
+  list-style: none;
+  
+}
+
+.navbar-links li:hover {
+  scale: 1.05;
+  transition: .3s;
+}
+
+.navbar-links li a {
+  display: block;
+  text-decoration: none;
+  color: rgb(36, 36, 36);
+  padding: 1.5rem;
+}
+
+.navbar-links a:hover {
+  color: black;
+  transition: .5s;
+}
+
+.toggle-button {
+  position: absolute;
+  top: 2rem;
+  right: 2rem;
+  display: none;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 30px;
+  height: 21px;
+}
+
+.toggle-button .bar {
+  height: 3px;
+  width: 100%;
+  background-color: rgb(36, 36, 36);
+  border-radius: 10px;
+}
+
+@media (max-width: 500px) {
+  .navbar {
+      flex-direction: column;
+      align-items: flex-start;
+  }
+
+  .toggle-button {
+      display: flex;
+  }
+
+  .navbar-links {
+      display: none;
+      width: 100%;
+  }
+
+  .navbar-links ul {
+      width: 100%;
+      flex-direction: column;
+  }
+
+  .navbar-links ul li {
+      text-align: center;
+  }
+
+  .navbar-links ul li a {
+      padding: .5rem 1rem;
+  }
+
+  .navbar-links.active {
+      display: flex;
+  }
+}
+
+
+
     
-}
-.nav-main li {
-    margin-left: 4em;
-}
-
-a {
-    text-decoration: none;
-    color: black;
-}
-
-a:hover {
-    color: rgb(118, 0, 0);
-    transition: .3s ease;
-}
-  
-/* nav-bar for smartphone */
-
-@media (max-width: 768px) {
-  .nav-main {
-    display: none;
-  }
-
-  .navbar-toggle {
-    display: block;
-  }
-
-  .navbar-toggle.active .toggle-icon {
-    background-color: transparent;
-  }
-
-  .navbar-toggle.active + .navbar-menu {
-    display: block;
-  }
-}
-
-  
   .grid {
     margin-left: auto;
     margin-right: auto;
@@ -140,11 +188,12 @@ a:hover {
     padding: 10vw;
     margin-top: 10em;
     background-color: rgb(195, 195, 195);
+    height: 100vh;
 }
 
 .about-me-img {
-  width: 200px;
-  height: 200px;
+  width: 300px;
+  height: 300px;
   background-color: #ccc;
   border-radius: 50%;
   overflow: hidden;
@@ -237,8 +286,35 @@ p, .footer-links {
   padding: 5em;
 }
 
+.footer-links a {
+  text-decoration: none;
+  color: black;
+}
+.footer-links li:hover {
+  scale: 1.05;
+  transition: .3s;
+}
+
 /* game canvas */
 #defaultCanvas0 {
   display: block;
   margin: 0 auto;
+}
+
+.button-resume {
+  font-size: 1em;
+  font-family: 'Roboto Mono', monospace;
+  background-color: rgb(61, 60, 60);
+  color: white;
+  border: black;
+  border-radius: 1em;
+  padding: 1em;
+  padding-top: .5em;
+  padding-bottom: .5em;  
+}
+
+.button-resume:hover {
+  scale: 1.05;
+  background-color: rgb(0, 0, 0);
+  transition: .3s;
 }

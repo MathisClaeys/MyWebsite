@@ -13,32 +13,32 @@
 <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@300&display=swap" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Braah+One&display=swap" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Montserrat+Subrayada&display=swap" rel="stylesheet">
+<script src="js/script.js" defer></script>
 </head>
 <body>
-  
-  <!-- Header -->
+
   <header>
-    <nav class="nav-main">
-        <a href="index.html" id="header-logo"> Mathis</a>
+
+
+    <nav class="navbar">
+      <div class="brand-title">Mathis</div>
+      <a href="#" class="toggle-button">
+        <span class="bar"></span>
+        <span class="bar"></span>
+        <span class="bar"></span>
+      </a>
+      <div class="navbar-links">
         <ul>
-            <li><a href="index.html">Home</a></li>
-            <li><a href="#">Work</a></li>
-            <li><a href="about.html">About</a></li>
+          <li><a href="#">Home</a></li>
+          <li><a href="#about-me">About</a></li>
+          <li><a href="#footer">Contact</a></li>
         </ul>
+      </div>
     </nav>
+
+
 </header>
-  <script>
-    const navbarToggle = document.getElementById('navbarToggle');
-    const navbarMenu = document.getElementById('navbarMenu');
 
-    navbarToggle.addEventListener('click', () => {
-      navbarToggle.classList.toggle('active');
-      navbarMenu.classList.toggle('active');
-});
-
-  </script>
-  
-  
     <div class="grid">
     <div class="img-wrapper">
       <img class="zoom" src="media/speaker.JPG">
@@ -66,7 +66,7 @@
       </div>
   </div>
   
-  <section class="about-me">
+  <section class="about-me" id="about-me">
     <div class="about-me-head">
     <h2>About Me</h2>
     <div class="about-me-img"><img src="media/about-me-img.jpg"></div></div>
@@ -75,6 +75,15 @@
       <p>This page contains a collection of my projects, I am student Industrial Design. These projects are mainly schoolprojects
       <br><br>
       Lorem ipsum dolor sit amet consectetur adipisicing elit. Illum, voluptas maxime velit ab harum provident amet? Pariatur, consequatur voluptates est quos nulla magni sunt consequuntur nisi ad et corporis veritatis obcaecati aperiam officia reprehenderit voluptatem? Fuga totam qui sint unde!</p>
+    </div>
+    <div class="button">
+      <button class=button-resume onclick="openPDF()">View resume</button>
+
+      <script>
+        function openPDF() {
+          window.open('media/Resume.pdf', '_blank');
+        }
+      </script>
     </div>
   </section>
 
@@ -96,34 +105,15 @@
       <!-- Add more photo divs as needed -->
     </div>
   </div>
-  <script>
-    const photos = document.querySelectorAll('.photo');
-    let currentIndex = 0;
-    
-    photos.forEach((photo, index) => {
-      photo.addEventListener('click', () => {
-        currentIndex = index;
-        showPhoto(currentIndex);
-      });
-    });
-    
-    function showPhoto(index) {
-      photos.forEach((photo, i) => {
-        if (i === index) {
-          photo.classList.add('active');
-        } else {
-          photo.classList.remove('active');
-        }
-      });
-    }
-    </script>
-<footer>
+  
+<footer id="footer">
   <div class="footer-content">
     <p>&copy; 2023 Mathis Claeys. All rights reserved.</p>
     <ul class="footer-links">
       <li><a href="#">Home</a></li>
       <li><a href="https://www.instagram.com/mathis_claeys/">Instagram</a></li>
-      <li><a href="mailto:mathis.claeys@ugent.be">Contact</a></li>
+      <li><a href="https://www.facebook.com/claeys.mathis/">Facebook</a></li>
+      <li><a href="mailto:mathis.claeys@ugent.be">Mail</a></li>
     </ul>
   </div>
 </footer>    
