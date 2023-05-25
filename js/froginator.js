@@ -15,6 +15,7 @@ let yoff = 2;
 let bonusTime = false;
 let bonusTimer = 0;
 const bonusDuration = 10; // Bonus time duration in seconds
+let angle = 0;
 
 
 
@@ -82,9 +83,9 @@ function draw() {
   }
 
   // Regenerate frogs if active frogs < 5
-  if (activeFrogs < 5) {
+  if (activeFrogs < 3) {
     for (let i = 0; i < 5 - activeFrogs; i++) {
-      frogArray.push(new Frog(random(-1000, -10), random(height), random(1, 4)));
+      frogArray.push(new Frog(random(-1000, -10), random(100, height - 100), random(1, 7)));
       activeFrogs++;
     }
   }
@@ -180,12 +181,12 @@ endShape();
     this.flyx = noise(xoff)*width;
     this.flyy = noise(yoff)*height;
     // With each cycle, increment xoff
-    xoff += 0.01;
-    yoff += 0.01;
+    xoff += 0.015;
+    yoff += 0.015;
   }
   hitTest(x, y) {
     const f = dist(x, y, this.flyx, this.flyy);
-    if (f <= 200 && this.flyActive) {
+    if (f <= 20 && this.flyActive) {
       this.flyHit = true;
       score += 1000;
       this.flyActive = false
@@ -200,6 +201,7 @@ class Frog {
     this.speed = speed;
     this.color = color;
     this.isHit = false;
+    this.angle = this.angle
   }
 
   display() {
@@ -247,8 +249,11 @@ class Frog {
   }
 
   move() {
-    this.posx += this.speed;
-  }
+      this.posx += this.speed;
+      this.posy = height - 200 -abs(sin(this.posx * 0.01)) * 60;
+    }
+  
+  
 
   hitTest(x, y) {
     const d = dist(x-20, y, this.posx, this.posy);
