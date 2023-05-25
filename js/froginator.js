@@ -9,6 +9,13 @@ let jungle;
 let cursorTarget;
 let hart;
 let myFont;
+let myFly;
+let xoff = 0;
+let yoff = 2;
+let bonusTime = false;
+let bonusTimer = 0;
+const bonusDuration = 10; // Bonus time duration in seconds
+
 
 
 function preload() {
@@ -18,6 +25,7 @@ function preload() {
 
 function setup() {
   createCanvas(1000, 600);
+  myFly = new Fly(100, 100)
   cursor(CROSS, 0, 0)
   myFont = loadFont("js/assets/gameFont.ttf")
   
@@ -58,6 +66,10 @@ function draw() {
   image(jungle, 0, 0, width, height);
   drawHarts()
   drawText();
+  myFly.display()
+  myFly.move()
+  
+
   for (let i = frogArray.length - 1; i >= 0; i--) {
     frogArray[i].display();
     frogArray[i].move();
@@ -92,9 +104,95 @@ function mouseClicked() {
   for (let i = 0; i < frogArray.length; i++) {
     frogArray[i].hitTest(mouseX, mouseY);
   }
+  if (myFly.hitTest(mouseX, mouseY)) {
+    activateBonusTime();
+    myFly = null;
+  }
 }
+class Fly {
+  constructor(flyx=0, flyy=0) {
+    this.flyx = flyx;
+    this.flyy = flyy;
+    this.flyHit = false;
+    this.flyActive = true
+  }
+  display() {
+    push();
+    translate(this.flyx, this.flyy);
 
+    if(this.flyHit) {
+      fill(0)
+    }
+    else {
+      fill(100);
+circle(10, 16, 12.5);
+ellipse(10, 7.5, 10, 7.5);
+fill(255);
+circle(7.5, 4, 4);
+circle(12.5, 4, 4)
+smooth()
+strokeWeight(0.4)
+strokeCap(ROUND)
+strokeJoin(ROUND)
+beginShape();
+curveVertex(8, 9);
+curveVertex(8, 9);
+curveVertex(1, 17.5);
+curveVertex(1, 25);
+curveVertex(3, 29);
+curveVertex(8, 20);
+curveVertex(10, 10);
+curveVertex(8, 9);
+curveVertex(8, 9);
+endShape();
 
+beginShape();
+curveVertex(20 - 8, 9);
+curveVertex(20 - 8, 9);
+curveVertex(20 - 1, 17.5);
+curveVertex(20 - 1, 25);
+curveVertex(20 - 3, 29);
+curveVertex(20 - 8, 20);
+curveVertex(20 - 10, 10);
+curveVertex(20 - 8, 9);
+curveVertex(20 - 8, 9);
+endShape();
+
+noFill();
+beginShape();
+vertex(7, 3.5);
+vertex(7, 4.5);
+vertex(8, 4.5);
+vertex(8, 3.5);
+endShape();
+
+beginShape();
+vertex(13, 3.5);
+vertex(13, 4.5);
+vertex(12, 4.5);
+vertex(12, 3.5);
+endShape();
+}
+    
+    pop();
+  }
+  move() {
+    this.flyx = noise(xoff)*width;
+    this.flyy = noise(yoff)*height;
+    // With each cycle, increment xoff
+    xoff += 0.01;
+    yoff += 0.01;
+  }
+  hitTest(x, y) {
+    const f = dist(x, y, this.flyx, this.flyy);
+    if (f <= 200 && this.flyActive) {
+      this.flyHit = true;
+      score += 1000;
+      this.flyActive = false
+      this.flyx += 10000
+    }
+}
+}
 class Frog {
   constructor(posx = 100, posy = 100, speed = 1, color = 153) {
     this.posx = posx;
@@ -107,6 +205,7 @@ class Frog {
   display() {
     push();
     translate(this.posx, this.posy);
+    
 
     if (this.isHit) {
       fill(0);
@@ -156,6 +255,9 @@ class Frog {
     if (d <= 80) {
       this.isHit = true;
       score += 100;
+      if (bonusTime) {
+        score += 100
+      }
     }
   }
 
@@ -177,3 +279,11 @@ function gameOver() {
   text("Game Over", width / 2, height / 2);
   text(score, width / 2, height / 2 + 80);
 }
+
+function activateBonusTime() {
+  if (!bonusTime) {
+    bonusTime = true;
+    bonusTimer = bonusDuration * 60;
+  }
+}
+
