@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@300&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Braah+One&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat+Subrayada&display=swap" rel="stylesheet">
+<script src="js/script.js" defer></script>
+</head>
+<body>
+
+  <header>
+
+
+    <nav class="navbar">
+      <div class="brand-title">Mathis</div>
+      <a href="#" class="toggle-button">
+        <span class="bar"></span>
+        <span class="bar"></span>
+        <span class="bar"></span>
+      </a>
+      <div class="navbar-links">
+        <ul>
+          <li><a href="#">Home</a></li>
+          <li><a href="#about-me">About</a></li>
+          <li><a href="#footer">Contact</a></li>
+        </ul>
+      </div>
+    </nav>
+
+
+</header>
+
+<section>
+    <h1>Industrial Production Speaker - 2023</h1>
+    <div class="section-content">
+        <div>
+            <p>For the coarse industrial production we got the oppertunity to design a speaker in group, using different production methods. 
+                <br><br>We made use of:
+            <ul>
+                <li>laser-cutting</li>
+                <li>CNC milling</li>
+                <li>3D-printing (FDM, SLA, SLS)</li>
+                <li>thermoforming</li>
+            </ul></p>
+        </div>
+        <img src="media/speaker.JPG">
+    </div>
+</section>
+
+<section class="section-even">
+    <h1>Adjustable Desk Lamp - 2020/2022</h1>
+    <div class="section-content">
+        <p>The adjustable desk lamp is the result of an assignment in our first year studying. The guidelines where to chose non-permanent connections 
+            so it deassembable. Also we should experiment with the use of different woodworking methods. Read brochure for more info. (below)</p>
+        <img src="media/lampWireframe.png">
+    </div>
+    <div class="section-brochure">
+        <div class="section-brochure-element">
+            <img src="media/lampMochup.png">
+        </div>
+        <div class="section-brochure-element" class="section-brochure-text">
+            <p>Later on we got to make a visual representation of a product we already made. I chose for my desk lamp.</p>
+            <div class="button" class="button-brochure">
+            <button class=button-resume onclick="openPDF()">Open Product brochure</button>
+    
+            <script>
+            function openPDF() {
+                window.open('media/lampBrochure.pdf', '_blank');
+            }
+            </script>
+            </div>
+        </div>
+
+        
+    </div>
+</section>
+
+<section>
+    <h1>Wooden Laptop Stand - 2020</h1>
+    <div class="section-content">
+      <div class="image-container">
+        <button class="next-arrow" onclick="changeImage()">&#8250;</button>
+        <img id="laptop-image" src="media/laptop-stand.png">
+      </div>
+      <p>The laptop stand is easy to store. This was a group assignment in our first year studying.</p>
+    </div>
+  
+    <script>
+      var images = [
+        "media/laptop-stand.png",
+        "media/laptop-stand3.jpg",
+        "media/laptop-stand2.jpg"
+      ];
+      var currentIndex = 0;
+  
+      function changeImage() {
+        currentIndex = (currentIndex + 1) % images.length;
+        document.getElementById("laptop-image").src = images[currentIndex];
+      }
+    </script>
+  
+  </section>
+  
+  
+  
+
+<section class="section-even">
+    <h1>Water Boiler - 2021</h1>
+    <div class="section-content">
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Perspiciatis ipsum adipisci voluptatum quam assumenda! Voluptatibus nulla, minus, numquam iusto dolor distinctio quidem ad vitae eos tenetur consequuntur est impedit eveniet.</p>
+        <img src="media/water-boiler.png">
+    </div>
+</section>
+
+<section>
+    <h1>Surface Modelling (CAD) - 2023</h1>
+    <br>
+    <h3>Opinel</h3>
+    
+    <div>
+        <div class="surface-model-grid">
+            <div class="grid-photo">
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Vitae, repellendus?</p>
+            </div>
+          <div class="grid-photo">
+            <img src="media/opinel.png" alt="Photo 1">
+          </div>
+          <div class="grid-photo">
+            <img src="media/opinel2.png" alt="Photo 2">
+          </div>
+          <div class="grid-photo">
+            <img src="media/opinel3.png" alt="Photo 3">
+          </div>
+          
+        </div>
+      </div>
+
+      <h3>Ice Cream Scoop</h3>
+    
+    <div>
+        <div class="surface-model-grid">
+            <div class="grid-photo">
+            <img src="media/ijslepel.png" alt="Photo 1">
+            </div>           
+            <div class="grid-photo">
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Vitae, repellendus?</p>
+            </div>
+          <div class="grid-photo">
+            <img src="media/ijslepel2.png" alt="Photo 2">
+          </div>
+          <div class="grid-photo">
+            <img src="media/ijslepel3.png" alt="Photo 3">
+          </div>
+          
+        </div>
+      </div>
+</section>
+
+<section class="section-even">
+    <h1>Froginator Game - 2023</h1>
+    <div class="section-content">
+      <div>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Perspiciatis ipsum adipisci voluptatum quam assumenda! Voluptatibus nulla, minus, numquam iusto dolor distinctio quidem ad vitae eos tenetur consequuntur est impedit eveniet.</p>
+        <div class="button" class="button-playGame">
+          <button class="button-resume" onclick="openLink()">Play Froginator</button>
+        </div>
+      </div>
+      <img src="media/froginator.png">
+    </div>
+  
+    <script>
+      function openLink() {
+        window.open('froginator.html', '_blank'); // Replace 'https://example.com' with your desired URL
+      }
+    </script>
+  </section>
+  
+    
+
+  
+<footer id="footer">
+  <div class="footer-content">
+    <p>&copy; 2023 Mathis Claeys. All rights reserved.</p>
+    <ul class="footer-links">
+      <li><a href="#">Home</a></li>
+      <li><a href="https://www.instagram.com/mathis_claeys/">Instagram</a></li>
+      <li><a href="https://www.facebook.com/claeys.mathis/">Facebook</a></li>
+      <li><a href="mailto:mathis.claeys@ugent.be">Mail</a></li>
+    </ul>
+  </div>
+</footer>    
+</body>
+
+
+</html>

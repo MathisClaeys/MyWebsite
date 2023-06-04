@@ -318,3 +318,122 @@ p, .footer-links {
   background-color: rgb(0, 0, 0);
   transition: .3s;
 }
+
+section {
+  background-color: #ccc;
+  margin-top: 5em;
+}
+
+.section-content {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding: 100px
+  ;
+}
+.section-content p {
+  width: 40vw
+}
+
+.section-content img {
+  width: 30vw;
+  
+}
+
+.section-even {
+  background-color: white;
+}
+.section-brochure {
+  display: flex;
+  
+  justify-content: space-around;
+  align-items: center;
+}
+
+.section-brochure img{
+  width: 40vw;
+  
+}
+
+.section-brochure-text {
+  display: flex;
+  flex-direction: column;
+  color: white;
+}
+h1 {
+  margin: 2em;
+  padding-top: 2em;
+}
+
+.button-brochure {
+  margin: 0;
+  align-self: left;
+}
+
+.section-brochure-element {
+  margin:5em;
+  display: block;
+  flex-direction: column;
+}
+
+.product-date {
+  position: absolute;
+  margin-left: 5em;
+  margin-bottom: 0;
+  
+}
+
+.surface-model-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-gap: 50px;
+  margin: 5em;
+}
+
+.grid-photo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.grid-photo img {
+  max-width: 100%;
+  height: auto;
+}
+
+h3 {
+  padding-left: 5em;
+}
+
+.button-projects {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 40px;
+  margin-bottom: 20px;
+}
+
+.image-container {
+  position: relative;
+  display: inline-block;
+  height: 30vw; /* Adjust the value to your desired height */
+  width: 30vw; /* Adjust the value to your desired width */
+}
+
+#laptop-image {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+}
+
+.next-arrow {
+  position: absolute;
+  top: 50%;
+  right: 10px;
+  transform: translateY(-50%);
+  font-size: 24px;
+  background: transparent;
+  border: none;
+  color: #000;
+  cursor: pointer;
+}
